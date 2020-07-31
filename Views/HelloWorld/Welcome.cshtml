@@ -1,0 +1,29 @@
+@{
+  ViewData["Title"] = "Welcome";
+}
+<h2>Welcome</h2>
+
+<ul>
+    @for (int i = 0; i < 2; i++) {
+
+        <li>
+            <span>ID: </span>
+            <small>@ViewData["ID"]</small>
+        </li>
+
+        <li>
+            <span>Name: </span>
+            <small>@ViewData["Name"]</small>
+        </li>
+
+
+        <li>
+            <span>Phone number: </span>
+            <small>@ViewData["Phoneno"]</small>
+        </li>
+
+        <div class="clearfix"></div>
+        <br>
+
+    }
+</ul>

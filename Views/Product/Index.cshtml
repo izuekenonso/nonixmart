@@ -1,0 +1,92 @@
+@model nonixmart.Models.ProductCategoryViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+<form asp-controller="Product" asp-action="Index" method="GET">
+    <div class="row">
+        <div class="col-md-6">
+            Title:
+            <input type="text" name="searchString" class="form-control">
+        </div>
+
+        <div class="col-md-6">
+            
+            Category:
+            <select asp-for="ProductCategory" name="productCategoryString" asp-items="Model.Category" class="form-control">
+                <option value="">All</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <br>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <input type="submit" class="btn btn-success" value="Filter" />
+        </div>
+    </div>
+</form>
+
+
+<div class="clearfix"></div>
+<br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].ExpiryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].Quantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Product) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpiryDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </th>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+    }
+    </tbody>
+</table>
